@@ -1,0 +1,808 @@
+Ejemplo de buscar mayúsculas y minúsculas Además averigua si es número
+
+var cadena = 'Buenos días, hoy es Jueves';
+var i=0;
+var caracter='';
+while (i <= cadena.length){
+    caracter = strings.charAt(i);
+    if (!isNaN(caracter * 1)){
+        alert('caracter es un número');
+    }else{
+        if (caracter == caracter.toUpperCase()) {
+            alert ('es un mayúscula');
+        }
+        if (caracter == caracter.toLowerCase()){
+            alert ('caracter es minúsculas');
+        }
+    }
+    i++;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+let primerCaracter=password.charAt(0);----------primer carácter
+if (primerCaracter == character.toUpperCase()) --- mayúscula
+if (primerCaracter == character.toLowerCase()) ----minúscula
+let contMayusculas=0;
+for (let i=0;i<password.legth;i++)
+     if (password.charAt(i)==character.toUpperCase() )
+      contMayusculas++;                                                                           ---- contar Mayúscula
+
+patron = /^[A-Z]/;
+   if (patron.test(password))    --------primer carácter mayúscula con patrón (también match en vez de test)
+    {
+if (!isNaN(primerCaracter)) ---primer carácter es un número isNaN()=true si no es número (Not at Number)
+
+patron = /^[0-9]/;
+if (patron.test(password) ----primer carácter es un número
+Funciones de cadena imprescindibles:
+password.CharAt(posicion)--- averigua el carácter de una determinada posición de la cadena
+password.CharCodeAt(posicion)--- averigua Unicode (caracteres de diferentes idiomas)
+password.codePointAt(posicion); ---posición en la tabla de caracteres ascii
+password.concat(otroPassw);--- unir dos cadenas
+cadena.endsWith("fin");-- true si coincide con la última palabra de una cadena
+cadena.fromCharCode(75) --devuelve a caracter un unicode valor: K
+cadena.includes("subcadena")  -- comprueba si una subcadena está dentro de otra principal
+cadena.indexOf("subcadena")--- posición de la primera aparición de la subcadena dentro de la principal (-1 no aparece)
+cadena.lastIndexOf("subcadena")---posición dentro de la última aparición
+cadena.length () --- longitud de la cadena
+cadena.match(subcadena)--- coincidencias
+cadena.repeat(6)--- aparece 6 veces repetida la cadena
+let resultado=cadena.replace(subcadena)---reemplaza una cadena dentro de otra
+let posicion= cadena.search(subcadena) --- busca una cadena dentro de otra y la reemplaza
+let subcadena=cadena.slice(5,10)--- extrae de la cadena principa desde el carácter 5 hasta el 10
+const miArray = cadena.split("  ")  -- te coge un texto, te quita los espacios en blanco y te genera un array
+cadena.startsWith("subcadena");  --- posición de primera aparición
+let subcadena=cadena.substring(1,6)--- contenido de los primeros 5 caracteres
+cadena.toLocaleUpperCase();  ---convierte a mayúscula
+cadena.toLocaleLowerCase(); -- convierte a minúscula
+let cadenaFinal=cadena.trim()  ---elimina espacios en blanco a izquierda y derecha de la cadena
+let cadenaFinal=cadena.trimEnd()--- elimina al final
+let cadenaFinal=cadena.trimStart()---elimina al principio
+
+EJEMPLOS:
+1º El password tiene que tener entre 8 y 14 caracteres, comenzar con un número, y al menos un guión bajo
+2º El password tiene que tener entre 10 y 20 caracteres, 1 solo número, 1  letra mayúscula, 1 punto, el resto letras minúsculas
+3º El password tiene que tener 15 caracteres: empieza por letra mayúscula, termina en número y el resto letras con al menos un guión bajo.
+
+Caracteres especiales para crear patrón
+
+^	Busca la coincicencia al inicio de la cadena	/^Esto/ coincidiría en: «Esto es una cadena»
+$	Coincidencia con el final del input o del texto	/final$/ coincidiría con: «Esto es el final»
+*	Coincide ninguna o muchas veces	/mi*/ coincidiría con: «miiiii» y tambien con «mi»
+?	Coincide cero o una vez	/ap?/ coincidiría con: «apple»
++	Coincide una o muchas veces	/ap+/ coincidiría con: «apple»
+{n}	Coincidiría exactamente n veces	/ap{2}/ coincidiría con: «apple» pero no con «apie»
+{n,}	Coincidiría n o mas veces	/ap{2,}/ coincidiría con todas las p en: «apple» y «appple» pero no en «apie»
+{n,m}	Coincidiría al menos n y como máximo m veces	/ap{2,4}/
+.	Para cualquier carácter salvo salto de linea	/a.e/ coincide con «ape» y «axe»
+[…]	Cualquier carácter dentro de los paréntesis	/a[px]e/ coincidiría “ape” y “axe” pero no “ale”
+[^…]	Cualquier carácter menos los que están entre paréntesis	/a[^px]/ coincidiría “ale” pero no “axe” o “ape
+d	Para dígitos de 0 a 9	/d{3}/ coincide 123 en “Now in 123”
+D	Cualquier caracter no digito	/D{2,4}/ coincide con “Now » en “Now in 123”
+w	Cualquier caracter que sea una letra, digito o barra baja	
+W	Lo contraio a lo anterior	/W/ Coincidiría “%” en “100%”
+
+Ejemplo patrones
+
+
+ let solonumeros=  /^[0-9]+$/;
+ let sololetras = /^[A-Za-z]+$/;
+ let primercaracterletra= /^[A-Za-z]\w{10,20}$/; //primer caracter letra luego un alfanumérico entre 10 y 20 caracteres
+ let solo10Numeros= /^\d{10}$/;
+  DD-MM-YYYY let formatoFecha= /^(\d{1,2}-){2}\d{2}(\d{2})?$/
+
+
+MetaCaracteres
+\d — coinciden con números ( igual que [0-9] ).
+\w — coincide con cualquier alfanumerico. (igual que [a-zA-Z0–9_] )
+\s — espacios en blanco
+\t — tabulación
+\D — todo caracter excepto números (igual que [^0–9]).
+\W — cualquier coincidencia salvo alfanumérico (igual que [^a-zA-Z0–9_] ).
+\S — todo excepo espacios en blanco
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+//1º Declarar variable
+let ciclos="Desarrollo de aplicacioones web";
+//2º Mostrar contenido por consola (F12)
+console.log(ciclos);
+//3º Mostrar en la pantalla, pero sin formato
+document.write(ciclos);
+//4º Mensaje emergente
+alert(ciclos);
+//5ºPoner contenido a través de JS a un objeto html cuyo id es nombre
+document.getElementById("nombre").innerText="Alexander";
+//6º Pedir por cuadro de diálogo emergente un nombre y
+// almacenarlo en una variable que acaba en un objeto del html cuyo id es "nombreVariable" (objeto span)
+let nombre=prompt("¿Cómo te llamas?")
+document.getElementById("nombreVariable").innerText=nombre;
+//7º Generar un evento sobre un objeto button del html cuyo id es "boton1".
+//cuando hacemos "click" sobre dicho botón se desencadena un evento que lo
+//va a resolver una función llamada pedirCadena
+document.getElementById("boton1").addEventListener("click",pedirCadena);
+
+function pedirCadena(){
+    let nuevoNombre=prompt("¿cómo te llamas?");
+    console.log("Nuevo nombre: ",nuevoNombre);
+    document.getElementById("nombreEvento").innerText=nuevoNombre;
+
+}
+//8º Añadir estilo a un objeto del html cuyo id es "boton1". Se trata de una etiqueta button
+
+document.getElementById("boton1").style.backgroundColor="green"
+document.getElementById("boton1").style.color="red";
+document.getElementById("boton1").style.fontSize="35px";
+with (document.getElementyby("boton1").style){
+ background.color="green";
+ style.color="red";
+...
+}
+
+//9º Averiguar si en una cadena incluye una determinada subcadena o palabra
+if (ciclos.includes("web"))
+console.log("sí contiene la palabra web")
+else console.log("no contiene la palabra web");
+//10º  Generar un vector a partir de una cadena de texto. Utilizando split
+
+ let cadenaNumeros="9,10,8,7,5,10,8"
+
+//split descompone la cadena en vector utilizando como referencia las comas
+
+vector=cadenaNumeros.split(",");
+//se recorre el vector con un bucle. Inconveniente : los contenidos son caracteres NO numéricos. Al parsearlos pasan a ser int.
+let suma=0;
+for ( let i=0;i<vector.length;i++){
+   suma=suma+parseInt(vector[i]);
+}
+let media=suma/vector.length;
+// .toFixed(2) deja en 2 decimales el resultado
+console.log("Media de notas: ",media.toFixed(2));
+
+
+//11º Tratamiento de un vector numérico
+
+//definición del vector con valores numéricos integer
+let vectorNumerico=[4,2,5,1,9,5,4,2];
+//recorrer el vector con un forEach, llamando al método mostrar para visualizar
+vectorNumerico.forEach(mostrar);
+function mostrar(item,index){
+    console.log("Posicion: ",index,"Contenido:",item);
+}
+//12 Funciones básicas de cadenas
+// Cadena de ejemplo
+let texto = "Hola, bienvenido a JavaScript";
+ // length - Obtiene la longitud de la cadena
+let longitud = texto.length;
+ // toUpperCase() - Convierte la cadena a mayúsculas
+let enMayusculas = texto.toUpperCase();
+// toLowerCase() - Convierte la cadena a minúsculas
+let enMinusculas = texto.toLowerCase();
+// indexOf() - Encuentra la posición de la primera aparición de una subcadena
+let posicionPalabra = texto.indexOf("bienvenido");
+// slice() - Extrae una parte de la cadena
+ let extraerParte = texto.slice(6, 16); // "bienvenido"
+
+// replace() - Reemplaza una parte de la cadena con otra
+let reemplazarTexto = texto.replace("JavaScript", "el mundo de la programación");
+// split() - Divide la cadena en un array de subcadenas
+ let palabrasArray = texto.split(" ");
+// charAt() - Devuelve el carácter en una posición específica
+ let primerCaracter = texto.charAt(0);
+// trim() - Elimina los espacios en blanco al inicio y al final de la cadena
+ let textoConEspacios = " Hola, mundo! ";
+let sinEspacios = textoConEspacios.trim();
+// Concatenar los resultados
+ let resultado = ` Texto original: "${texto}" <br> Longitud del texto: ${longitud} <br> En mayúsculas: "${enMayusculas}" <br> En minúsculas: "${enMinusculas}" <br> Posición de "bienvenido": ${posicionPalabra} <br> Parte extraída (6, 16): "${extraerParte}" <br> Texto reemplazado: "${reemplazarTexto}" <br> Array de palabras: [${palabrasArray.join(", ")}] <br> Primer carácter: "${primerCaracter}" <br> Texto sin espacios: "${sinEspacios}" `;
+// Mostrar el resultado en el elemento <p> con id="resultado"
+document.getElementById("resultado").innerHTML = resultado;
+
+//PATRONES (test)
+// Expresión regular para validar si una cadena contiene solo letras
+ let patron = /^[A-Za-z]+$/;
+if (patron.test(textoReferencia))  //devuelve booleana
+//patrón solo números
+let patron = /^\d+$/;
+//contiene al menos una mayúscula
+let patron=/[A-Z]/;
+if (patron.test(textoReferencia))
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+window.addEventListener("load",inicio);
+const imagenes=["./img/gallery/gallery-1.jpg","./img/gallery/gallery-2.jpg","./img/gallery/gallery-3.jpg","./img/gallery/gallery-4.jpg","./img/gallery/gallery-5.jpg","./img/gallery/gallery-6.jpg","./img/gallery/gallery-7.jpg","./img/gallery/gallery-8.jpg"]
+const ciudades=["Londres","Tokyo","Roma","BerlÃ­n","New York","Toril","Talayuela","Navalmoral"]
+const traduccionMenu=["Team A","Team B","Team C","Team D","Team E"]
+const Servicios= ["RRHH","Contabilidad","Marketing","DiseÃ±o","ProducciÃ³n","Desarrollo"]
+const nombreWeb="DWEC"
+const subTitulo="Desarrollo web entorno cliente"
+let logotipo="./img/apple-touch-icon.png";
+let nuevoPlaceHolder="teclea un correo de educarex"
+let nuevoServicio="Nuevos Servicios"
+let contenidoServicios=["./img/chefs/chefs-1.jpg","./img/chefs/chefs-2.jpg","./img/chefs/chefs-3.jpg","./img/chefs/chefs-4.jpg","./img/chefs/chefs-5.jpg","./img/chefs/chefs-6.jpg"]
+
+const itemContenido=["cuarto slash","quinto slash","sexto slash","septimo slash"];
+const autor=["Lola","Paca","Berta","Ramira"]
+NuevoPrecio=["Precio X","Precio Y","Precio Z"];
+A=[20,30,50,20];
+B=[340,345,344,320]
+C=[30,20,30,10]
+D=[100,200,300,400]
+function inicio(){
+    const listaMenu=document.querySelectorAll("ul li a");
+    listaMenu.forEach(recorrerM);
+    function recorrerM(item,indice){
+        console.log("item")
+        item.text=traduccionMenu[indice];
+    }
+    const listabotones=document.querySelectorAll("button");
+    listabotones.forEach(recorrer);
+    function recorrer(item,indice)
+    {
+       
+        item.style.classname="btn btn-info"
+    }
+
+    const listaImagenes=document.querySelectorAll("img");
+    listaImagenes.forEach(recorrer2);
+    function recorrer2(item,indice){
+        
+      //  item.removeAttribute("xmlns");
+        item.setAttribute("src",imagenes[indice]);
+        console.log(item);
+       
+        }
+        let contenedor=document.querySelector("#galeria");
+        let cajaX=document.createElement("div");
+        for (let i=3;i<imagenes.length;i++){
+            console.log("entro en bucle")
+         
+            
+            cajaX.innerHTML+='<div class="col-sm-4">'+
+            '<div class="thumbnail">'+
+             '<img src="'+imagenes[i]+'" alt="Paris" width="400" height="300">'+
+            '  <p><strong>'+ ciudades[i]+'</strong></p>'+
+              '<p>Yes, we built '+ciudades[i]+'</p>'+
+            '</div>'+
+          '</div>';
+        }
+        contenedor.appendChild(cajaX);
+    let titulo=document.querySelector("h1");
+    titulo.textContent=nombreWeb;
+    let subtitulo=document.querySelector("div p");
+    subtitulo.textContent=subTitulo;
+
+    let logo=document.querySelector("[href='#myPage']");
+    logo.textContent=""
+    let imagenlogo=document.createElement("img");
+    imagenlogo.setAttribute("src",logotipo);
+    logo.appendChild(imagenlogo);
+
+    let oldPlaceHolder=document.querySelector("[type='email']");
+    console.log(oldPlaceHolder)
+    oldPlaceHolder.setAttribute("placeholder",nuevoPlaceHolder); 
+
+    //servicios: tÃ­tulo + chefs
+    let servicio=document.querySelector("#services >h2 ")
+    servicio.textContent=nuevoServicio;
+    const listaSpanServicios=document.querySelectorAll("span~h4");
+    listaSpanServicios.forEach(mostrarSpan);
+    function mostrarSpan(item,indice){
+        item.textContent=Servicios[indice];
+        let anterior=item.previousElementSibling;
+        console.log(anterior)
+        anterior.className="";
+        let imagen=document.createElement("img");
+        imagen.setAttribute("src",contenidoServicios[indice])
+        item.appendChild(imagen);
+        
+    }
+    
+    let CarouselIndicator=document.querySelector(".carousel-indicators");
+    for (let i=3;i<itemContenido.length+3;i++){
+    let indice=document.createElement("li");
+    indice.setAttribute("data-target",'#myCarousel');
+    indice.setAttribute("data-slide-to",i);
+    CarouselIndicator.appendChild(indice);
+    }
+    let listaItems=document.querySelector(".carousel-inner");
+    for (let i=0;i<itemContenido.length;i++){
+    let nuevoItem=document.createElement("div");
+    nuevoItem.className="item";
+    let contenido=document.createElement("h4");
+    contenido.textContent=itemContenido[i];
+    let contenido2=document.createElement("span");
+    contenido2.textContent=autor[i];
+    nuevoItem.appendChild(contenido);
+    nuevoItem.appendChild(contenido2);
+    listaItems.appendChild(nuevoItem);
+    }
+
+    let precio=document.querySelector("#pricing>div>h2");
+     precio.textContent="Listado de precios";
+     let subt=document.querySelector("#pricing>div>h4");
+     subt.textContent="Elige la forma de pago"
+    let listadoPrecios=document.querySelector("#cardPrecios");
+    console.log(listadoPrecios)
+    let cajaPrecios=document.createElement("div");
+    for (let i=0;i<3;i++){
+        console.log("entro en bucle")
+      cajaPrecios.innerHTML+=" <div class='col-sm-4 col-xs-12'><div class='panel panel-default text-center'>"+
+        "<div class='panel-heading'>"+
+          "<h1>"+NuevoPrecio[i]+"</h1>"+
+        " </div>"+
+       " <div class='panel-body'>"+
+         " <p><strong>"+A[i]+"</strong> Euros</p>"+
+         " <p><strong>"+B[i]+"</strong> Dolares</p>"+
+         " <p><strong>"+C[i]+"</strong> Yenes</p>"+
+         " <p><strong>"+D[i]+"</strong> Libras</p>"+
+         
+        " <p><strong>Endless</strong> Amet</p>"+
+        "</div>"+
+       " <div class='panel-footer'>"+
+       "   <h3>"+A[i]+"</h3>"
+        "  <h4>per month</h4>"+
+        "  <button class='btn btn-lg'>Sign Up</button> </div>      </div></div> ";  
+    }
+listadoPrecios.appendChild(cajaPrecios);
+
+}
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Acceso al formulario
+
+1º Elemento text
+
+Para acceder al valor de un input de tipo texto, se referencia el atributo “value”.
+Ejemplo​ :
+<input ​ type​ = ​ "text"​ ​ id​ = ​ "miTexto"​ >
+Javascript asociado:
+let​ elemento=​ document​ .getElementById(​ "miTexto"​ );
+alert(elemento.value);
+
+
+
+2ºRadioButton
+
+Los “Radio button” son elementos del formulario que ante varias entradas te permiten seleccionar
+sólo una de ellas. Se agrupan teniendo un “name” común.
+Para acceder a ellos, se accede como un array, donde se tiene el atributo “value” y el atributo
+“checked” que es true si está seleccionado, false en caso contrario.
+Ejemplo:
+
+<input type="radio" id="preguntaSI" name="pregunta" value="si" />
+<input type="radio" id="preguntaNO" name="pregunta" value="no" />
+<input type="radio" id="preguntaNC" name="pregunta" value="NoContesta" />
+
+
+Javascript asociado:
+let​ elementos=​ document​ .getElementsByName(​ "pregunta"​ );
+for​ ( ​ let​ i=​ 0 ​ ;i<elementos.length;i++){
+if​ (elementos[i].checked===​ true​ )
+alert(​ "Valor del elemento marcado "​ +elementos[i].value);
+
+2º CheckBox
+
+Similar a los “Radio button”, salvo que permite que haya más de un elemento marcado.
+
+
+<input type="checkbox" id="DIW" name="modulos" value="diw" />
+<input type="checkbox" id="DEC" name="modulos" value="dec" />
+<input type="checkbox" id="DES" name="modulos" value="des" />
+
+JavaScript asociado
+
+let elementos=document.getElementsByName("modulos");
+for(let i=0;i<elementos.length;i++){
+if(elementos[i].checked===true){
+alert("Valor del elemento marcado "+elementos[i].value);
+}
+}
+
+
+
+3º Select
+
+
+Elemento que muestra un desplegable y nos permite elegir una opción del mismo. Aquí destaca el atributo “options”, que es un atributo que contiene un array con las opciones disponibles y el atributo “selectedIndex” que contiene (y se puede modificar) la posición del array “options” seleccionada actualmente (o la primera si se permite multiselección) o -1 si no está seleccionada ninguna opción (o queremos des-seleccionarlas
+
+Ejemplo html
+
+<select id="aprobar" >
+<option value="10">Saco 10 en DWEC</option>
+<option value="9">Saco 9 en DWEC</option>
+<option value="8">Saco 8 en DWEC</option>
+</select>
+
+JavaScript
+let elemento=document.getElementById("aprobar");
+for(let i=0;i<elemento.options.length;i++){
+alert("Valor de la opción "+elemento.options[i].value);
+}
+let sel=elemento.selectedIndex;
+alert("El valor de la opción seleccionada es "+elemento.options[sel].value+" y el texto asociado es "+elemento.options[sel].text);
+// Cambiamos el índice seleccionado
+elemento.selectedIndex=0;
+
+Formulario
+<form action="#" method="post" id="accion">
+o bien si tenemos respaldo en el back:
+  <form action="http://moralo.atwebpages.com/daw2022/insertar.php" method="get" id="validar">
+
+siempre asociado a un botón submit
+<input type="submit" name="submit" value="Validar" class="btn btn-success">
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+html
+  <button id="botonAppend">append</button>
+  <button id="botontextContext">textContent</button>
+
+  <div id="div1"></div>
+ javascript
+    function usa_append(event){
+        let div = document.querySelector("#div1");
+        div.append("Mensaje Append");
+    }
+
+    function usa_textContent(event){
+        let div = document.querySelector("#div1");
+        div.textContent = "Mensaje textContent";
+    }
+
+    let boton_1 = document.querySelector("#boton1");
+    boton_1.addEventListener("click", usa_append);
+
+    let boton_2 = document.querySelector("#boton2");
+    boton_2.addEventListener("click", usa_textContent);
+
+
+===========================================================================================================
+
+
+
+html:
+<button id="boton1">Mostrar Hora</button>
+<div id="div1"></div>
+JavaScript
+   
+    function ponerFecha(event){
+        let div_1 = document.querySelector("#div1");
+        let fecha = new Date();
+        let parrafo = document.createElement("p");
+        parrafo.textContent = fecha;
+        div1.append(parrafo);
+      }
+    let boton_1 = document.querySelector("#boton1");
+    boton_1.addEventListener("click", ponerFecha);
+
+-----------------------------------------------------------------------------------------------------------------
+
+1.Selector universal: *{  }
+El selector universal se denota por *que coincide con todos los elementos de cualquier tipo:
+
+
+         let elemento = document.querySelector('*');
+
+          let elementos = document.querySelectorAll('*');
+        
+
+ 2.Selector de tipo
+    
+Para seleccionar elementos por nombre de nodo, utilizar el selector de tipo,
+
+ por ejemplo, a  selecciona todos los <a> elementos.
+
+//localiza el primer encabezamiento H1
+         let primerH1 = document.querySelector('h1');
+        
+//localiza todos los encabezamientos H1
+
+         let todosH1 = document.querySelectorAll('h1');
+        
+3. Selector de clase
+Busca elementos de una determinada clase en la hoja de estilo.
+
+El  ejemplo encuentra el primer elemento con la menu-itemclase:
+
+        let elemento = document.querySelector('.menu-item');
+       
+Y el siguiente ejemplo encuentra todos los elementos con la menu-itemclase:
+
+         let elementos = document.querySelectorAll('.menu-item');
+    
+
+  
+4 Selector de identificación
+     
+Para seleccionar un elemento en función del valor de su id, utilice la sintaxis del selector de id: #id
+
+
+         let logo = document.querySelector('#logo');  //en teoría es único, con lo cual no tiene sentido el querySelectorAll
+
+      
+5 Selector de atributos
+     
+Para  seleccionar todos los elementos que tienen un atributo determinado, 
+
+[attribute]
+[attribute=value]
+[attribute~=value]  
+
+
+let usuario = document.querySelector('[name="usuario"]');
+let todosUsuarios=document.querySelector('[type=text]');
+
+        
+6 Selectores de agrupación
+
+Todos los elementos div y p
+         let elementos = document.querySelectorAll('div, p');
+        
+combinadores descendentes : todos los a dentro de p
+       
+         let elementos = document.querySelectorAll('p a'); 
+ combinadores de hijos: hijos directos del primer elemento
+  
+         let elementos = document.querySelectorAll('ul > li'); 
+(completar con hermanos, hermanos adyacentes...)
+
+
+
+-------------------------------------------------------------------------------------
+
+
+Un vector es una agrupación organizada de elementos del mismo tipo.
+
+// Vacío const alumnos = [];
+// Lleno const alumnos = ['Alexander', 'Milagros', 'Raúl', 'Paula', 'Lucas', 'Miguel', 'JDavid'];
+
+// ver contenido de una posición
+console.log(alumnos[6]);  //se ve JDavid
+
+//longitud
+console.log(alumnos.length); //tamaño del vectro
+
+//añadir a Víctor
+alumnos.push['Víctor'];
+
+//eliminar
+alumnos.slice(2); //desaparece Raúl
+//recorrer
+ for (al in alumnos) {...} // bucle for in
+ alumnos.foreach(mostrar); //bucle foreach que delega en la función mostrar
+         function mostrar(contenido,posicion){}
+
+//extraer un subconjunto
+let subgrupo=alumnos.slice(2,4); //a partir de la posición 2 muestra 4
+//convertir un string en vector
+let cadena="5,3,6,3,7,3,5";
+let vectorNumeros=cadena.Split(",");
+
+//includes: buscar
+
+if (vectorNumeros.includes(5)){ console.log("está el 5")}
+
+------------------------------------------------------------------------------------------------
+
+
+Una vez construido el árbol, se puede manipular de forma sencilla la página:
+
+acceder al valor de un elemento,
+establecer el valor de un elemento,
+mover un elemento de la página,
+crear y añadir nuevos elementos...
+DOM: permite acceder directamente al nodo o bien a través de sus nodos padre.
+
+Funciones para acceder directamente:
+
+document.getElementsByTagName()
+let cajasX=getElementsByTagName("input") obtiene todos los elementos de la página XHTML cuya etiqueta sea igual que el parámetro que se le pasa a la función
+
+Para recorrer:
+
+for(item of cajasX){
+
+ console.log(item.value);
+
+}
+
+document.getElementsByName()
+se buscan los elementos cuyo atributo name sea igual al parámetro proporcionado
+
+let contenido = document.getElementsByName("nombreP");
+
+<p name="nombreP">...</p>
+<p name="nombre">...</p>
+
+document.getElementById()
+La función getElementById() es la más utilizada cuando se desarrollan aplicaciones web dinámicas. Accede directamente a un nodo y puede leer o modificar sus propiedades.
+
+La función getElementById() devuelve el elemento XHTML cuyo atributo id coincide con el parámetro indicado en la función. Como el atributo id debe ser único para cada elemento de una misma página, la función devuelve únicamente el nodo deseado.
+
+let cabecera = document.getElementById("cabecera");
+
+<div id="cabecera">
+
+document.getElementsByClassName( )
+La palabra class es reservada. En su lugar se usa la palabra className. Devuelve un array con todas las etiquetas con un mismo nombre.
+
+let listaElementos=document.getElementsByClassName("cajas");
+
+
+for (let item of listaElementos){
+        item.innerHTML=
+
+
+Array.from(listaComponentes).forEach(function(elemento) {
+        elemento.style.Color=....
+
+
+
+
+document.querySelector()
+Permite hacer una búsqueda más amplia
+
+
+<div id="prueba">
+<span id="id5" class="clase" title="Azul"></span>
+<span id="id4" class="clase" title="Verde"></span>
+<span id="id3" class="clase" title="Naranja"></span>
+<span id="id2" class="clase" title="Lila"></span>
+<span id="id1" class="clase" title="Rojo"></span>
+
+document.querySelector('#prueba .clase').title // Azul
+document.querySelector('#prueba #id3.clase').title // Naranja
+document.querySelector('#prueba .clase + .clase').title // Verde
+document.querySelector('#prueba .clase[title^=L]').title // Lila
+document.querySelectorAll( )
+Devuelve un array con todos los nodos que sea capaz de llamar el selector CSS que escribas dentro del paréntesis. Nos permite conseguir todos los elementos de una o varias consultas, simplemente separando con comas, como hacemos en CSS.
+
+<div id="prueba">
+<span id="id5" class="clase" title="Azul"></span>
+<span id="id4" class="clase" title="Verde"></span>
+<span id="id3" class="clase" title="Naranja"></span>
+<span id="id2" class="clase" title="Lila"></span>
+<span id="id1" class="clase" title="Rojo"></span>
+// Los 5 <span>
+document.querySelectorAll('#prueba .clase')
+
+// Todos los <span> de una página
+document.querySelectorAll('span')
+
+// Todos los <span> y <img> de una página
+document.querySelectorAll('span, img')
+
+// Todos los <span> hijos de <div>
+document.querySelectorAll('div > span')
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+JavaScript tiene la capacidad de poder manipular el HTML, también denominado DOM: las puede recorrer, crear etiquetas nuevas, modificar existentes, borrar, cambiar textos, atributos, añadir estilos…
+
+Capturar un elemento por selector de coincidencia
+const identificador = document.querySelector('#identificador');
+Capturar un grupo de elementos
+const identificadores= document.querySelectorAll(".Caja1");
+
+Capturar por id
+const boton1 = document.getElementById('btn1');
+
+Capturar por etiquetas
+const parrafos = document.getElementsByTagName('p');
+Capturar por clases
+const elementos = document.getElementsByClassName('claseCaja');
+
+Cambiar estilo
+const colorTexto = document.querySelector('#parrafo');
+colorTexto.style.color="green";
+
+Eliminar estilo
+colorText.style.color=null;
+
+Cambiar atributos
+<a href="http://www.hoy.es/" id="enlace" target="_blank">Periódico Regional</a>
+
+const enlace = document.querySelector('#enlace');
+enlace.setAttribute('href', 'http://elperiodicoextramdura.com/');
+
+eliminar
+
+enlace.removeAttribute('target');
+
+ver contenido
+const texto = document.querySelector('#enlace').textContent;
+
+cambiar contenido
+texto.textContent='Periódico nacional'
+
+
+
+---------------------------------------------------------------------------------------------------
+
+Navegar entre los nodos de tipo elememento
+
+firstElementChild : almacena la referencia del primer nodo de tipo elemento hijo.
+parentElement : almacena la referencia del nodo elemento padre.
+lastElementChild : almacena la referencia del último nodo hijo.
+nextElementSibling : almacena la referencia del siguiente nodo de tipo elemento (si lo tiene)
+previousElementSibling : almacena la referencia del nodo de tipo elemento previo (si lo tiene)
+children : almacena una colección con todos los elementos tipo nodo hijo.
+
+Evento es cualquier acción que pueda realizar un usuario contra un navegador
+
+
+pulsar una tecla,  mover el ratón, redimensionar el navegador, moverlo.  Es el momento de desencadenar una acción (función) y poder extraer información.
+
+Eventos más comunes:
+
+load: Se ha terminado de cargar la página.
+focus: Un input recibe el foco.
+blur: Un input pierde el foco.
+submit: Se envía un formulario.
+scroll: Se mueve el scroll.
+keydown: Se pulsa una tecla del teclado.
+click: Se hace clic izquierdo con el ratón.
+contextmenu: Se hace clic derecho con el ratón.
+mouseenter: Entra el cursor del ratón.
+mouseleave: Sale el cursor del ratón.
+mousemove: Se mueve el cursor del ratón.
+Ejemplo1
+
+html:
+<input id="boton1" type="button" value="Haz click">
+<input id="texto" type="text" placeholder="escribe y cambia back">
+
+
+script:
+// Variables
+const boton1 = document.querySelector('#boton1');
+// Evento
+boton.addEventListener('click', function(evento) {
+alert("has pulsado el botón");
+});
+//Variables
+const campo = document.querySelector('#texto');
+// Eventos
+campo.addEventListener('keydown', instrucciones);
+
+// Funciones
+function instrucciones(evento) {
+
+if(evento.code === 'Enter') {
+document.getElementById("texto").style.backgroundColor="red";
+}
+if (evento.code === 'Escape'){
+document.getElementById("texto").style.backgroundColor="blue";
+}
+if (evento.code === 'Backspace'){
+console.log("entro en backspace ")
+document.getElementById("texto").style.backgroundColor="green";
+}
+if (evento.code==='Space'){
+document.getElementById("texto").style.backgroundColor="orange";
+
+}
+if (evento.code==='KeyY'){
+document.getElementById("texto").style.backgroundColor="yellow";
+}
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
