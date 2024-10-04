@@ -1,3 +1,6 @@
+{2,}
+min max contar
+
 Ejemplo de buscar mayúsculas y minúsculas Además averigua si es número
 
 var cadena = 'Buenos días, hoy es Jueves';
