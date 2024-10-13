@@ -22,7 +22,7 @@ function inicio(){
                     }
                     
                 }
-                alert("Hijo  "+(numHijo+1)+" : "+provincia.textContent)
+                alert("Hijo   "+(numHijo+1)+" : "+provincia.textContent)
             }
         }
     }
