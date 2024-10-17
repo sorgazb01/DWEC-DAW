@@ -1,8 +1,6 @@
 const urlAPI = "getTodoPersonal.json"
 
-const contenedorDatos = document.querySelector(".row .gx-4 .gx-lg-5")
-
-
+const contenedorDatos = document.querySelector(".row gx-4 gx-lg-5")
 
 fetch(urlAPI)
     .then((response) => response.json())
