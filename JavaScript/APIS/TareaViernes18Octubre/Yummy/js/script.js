@@ -2,6 +2,8 @@ window.onload = inicio
 
 const urlAPIPlatos = "getPlatos.php.json"
 
+const urlAPICocineros = "getCocinero.php.json"
+
 const listaPanaderias=["Jesus","Almagro","Julia","Andalusi","JoseAntonio","el trigal"]
 
 const listaEnlaces=["panaderiajesus.com","panalmagro.es",
@@ -9,19 +11,19 @@ const listaEnlaces=["panaderiajesus.com","panalmagro.es",
 "eltrigal.com"
 ]
 
-const listaCocineros = document.querySelectorAll(".chef-member")
+const infoCocineros = document.querySelectorAll(".member-info")
 
 const platos = document.querySelectorAll(".col-lg-4.menu-item")
 
-// Indentificamos la barra de navegacion:
 const barraNavegacion = document.querySelector("#navbar ul")
 
-// Indentificamos los contenedores de estadisticas:
 const contenedoresEstaditicas = document.querySelectorAll(".purecounter")
 
 function inicio(){
 
-    console.log(listaCocineros)
+    cambiarDatosBarraNavegacion()
+
+    generarEstadisticasAleatorias()
 
     fetch(urlAPIPlatos)
     .then((response) => response.json())
@@ -29,11 +31,11 @@ function inicio(){
     // .finally(() => console.log("Terminado."))
     // .catch((error) => alert(error))
 
-    // Cambiamos los datos de la barra de navegacion
-    cambiarDatosBarraNavegacion()
-
-    // Cambiamos las estadisticas random:
-    generarEstadisticasAleatorias()
+    fetch(urlAPICocineros)
+    .then((response) => response.json())
+    .then((data) => cambiarCocineros(data))
+    // .finally(() => console.log("Terminado."))
+    // .catch((error) => alert(error))
 }
 
 function cambiarPlatos(datos){
@@ -48,14 +50,12 @@ function cambiarPlatos(datos){
 }
 
 function cambiarCocineros(datos){
-    let index = 0;
-    
+    let index = 0
     datos.forEach((dato,index) => {
-            listaCocineros[index].children[0].firstElementChild.setAttribute("src",dato.imagen)
-            listaCocineros[index].children[1].textContent=dato.nombre
-            listaCocineros[index].children[2].textContent=dato.ingredientes
-            listaCocineros[index].children[3].textContent=dato.precio
-        })
+        infoCocineros[index].children[0].textContent = dato.nombre
+        infoCocineros[index].children[1].textContent = dato.funcion
+        infoCocineros[index].children[2].textContent = dato.descripcion
+    })
 }
 
 function cambiarDatosBarraNavegacion(){
