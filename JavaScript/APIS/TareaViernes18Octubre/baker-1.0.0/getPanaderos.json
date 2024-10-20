@@ -9,21 +9,21 @@
     {
         "id": 2,
         "nombre": "PACA",
-        "ingredientes": "HARINERO",
+        "funcion": "HARINERO",
         "imagen": "https:\/\/randomuser.me\/api\/portraits\/women\/17.jpg",
         "precio": 45
     },
     {
         "id": 3,
         "nombre": "LOLO",
-        "ingredientes": "HORNERO",
+        "funcion": "HORNERO",
         "imagen": "https:\/\/randomuser.me\/api\/portraits\/men\/18.jpg",
         "precio": 46
     },
     {
         "id": 4,
         "nombre": "LOLA",
-        "ingredientes": "LEVADURAS",
+        "funcion": "LEVADURAS",
         "imagen": "https:\/\/randomuser.me\/api\/portraits\/women\/19.jpg",
         "precio": 37
     }
