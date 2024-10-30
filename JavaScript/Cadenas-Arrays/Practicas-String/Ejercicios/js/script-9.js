@@ -18,8 +18,6 @@ function mostrar(datos){
     cadenasFichero.forEach(element => {
         datosPueblo.push(element.split(';'))
     });
-    console.log(datosPueblo)
-
     gestionDatosPueblo(datosPueblo)
 }
 
