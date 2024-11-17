@@ -9,13 +9,13 @@ export class AppComponent {
   euros : number = 0
   dolares : number = 0
   yenes : number = 0
-
+  
   limpiar(){
     this.euros = 0
     this.dolares = 0
     this.yenes = 0
   }
-
+  
   conversion(moneda:string){
     if(moneda == 'euros'){
       this.dolares = this.euros * 0.95

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Conversor-Monetario": {
+    "Conversor-Divisas": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/conversor-monetario",
+            "outputPath": "dist/conversor-divisas",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Conversor-Monetario:build:production"
+              "browserTarget": "Conversor-Divisas:build:production"
             },
             "development": {
-              "browserTarget": "Conversor-Monetario:build:development"
+              "browserTarget": "Conversor-Divisas:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Conversor-Monetario:build"
+            "browserTarget": "Conversor-Divisas:build"
           }
         },
         "test": {
@@ -96,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "a1eaf142-0489-4c11-9115-adcba6634b72"
+    "analytics": "ef80c465-f4c7-4b13-aa61-55d7fff21d6c"
   }
 }
