@@ -20,8 +20,8 @@
             <td>{{f.precio}}</td>
             <td>{{f.unidades}}</td>
             <td><img src="{{f.imagen}}" width="50" height="50"></td>
-            <td><button class="btn btn-success">Modificar</button></td>
-            <td><button class="btn btn-danger">Eliminar</button></td>
+            <td><button (click)="modificar(f)" class="btn btn-success">Modificar</button></td>
+            <td><button (click)="eliminar(f.id)" class="btn btn-danger">Eliminar</button></td>
           </tr>
         </tbody>
       </table>
@@ -48,8 +48,10 @@
           <label for="img">Imagen:</label>
           <input [(ngModel)]="frutaSeleccionada.imagen" type="text" name="img" id="img" class="form-control" placeholder="Introduce el URL de la Imagen">
         </div>
-        <button (click)="aniadirProducto()" class="btn btn-success" style="margin: 5px;">Añadir Fruta</button>
-        <button (click)="actualizarProducto()" class="btn btn-success" style="margin: 5px;">Actualizar Fruta</button>
+        <button (click)="aniadirProducto(f)" class="btn btn-success" style="margin: 5px;">Añadir Fruta</button>
+        <button (click)="actualizarProducto(f)" class="btn btn-success" style="margin: 5px;">Actualizar Fruta</button>
+        <button (click)="resetearFormulario()" class="btn btn-warning" style="margin: 5px;">Resetear</button>
+        <p>{{mensajes}}</p>
       </form>
     </div>
   </div>

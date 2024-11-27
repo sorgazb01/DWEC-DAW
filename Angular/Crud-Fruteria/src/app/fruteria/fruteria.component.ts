@@ -9,6 +9,7 @@ import { ServFrutaService } from '../serv-fruta.service';
 })
 export class FruteriaComponent {
 
+  mensajes ! : ''
   fruta! : FrutaModule
   frutaSeleccionada : FrutaModule={
     id : 0,
@@ -23,10 +24,25 @@ export class FruteriaComponent {
     this.httpCliente.leerFrutas().subscribe(x=>this.listaFrutas = x)
   }
 
-  actualizarProducto() {
-
+  actualizarProducto(form:{value:FrutaModule}) {
+    this.httpCliente.actualizarFruta(form.value).subscribe((f:FrutaModule)=>{this.fruta = f;
+      this.httpCliente.leerFrutas().subscribe(f=>this.listaFrutas = f)})
   }
-  aniadirProducto() {
+
+  aniadirProducto(form:{value:FrutaModule}) {
+    this.httpCliente.crearFruta(form.value).subscribe((p:FrutaModule)=>{this.fruta=p})
+  }
+
+  eliminar(id: number) {
+    this.httpCliente.eliminarFruta(id).subscribe((x:FrutaModule)=>{this.fruta=x;
+      this.httpCliente.leerFrutas().subscribe(x=>this.listaFrutas = x)})
+  }
+
+  modificar(f:FrutaModule) {
+    this.frutaSeleccionada = f
+  }
+
+  resetearFormulario() {
 
   }
 }
