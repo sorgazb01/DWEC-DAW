@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 import { HttpClientModule } from '@angular/common/http'
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatIconModule} from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatButtonModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
