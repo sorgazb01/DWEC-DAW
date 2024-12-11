@@ -15,6 +15,7 @@ import { BrecolComponent } from './brecol/brecol.component';
 import { LombardaComponent } from './lombarda/lombarda.component';
 import { ColiflorComponent } from './coliflor/coliflor.component';
 import { RepolloComponent } from './repollo/repollo.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RepolloComponent } from './repollo/repollo.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -113,7 +113,7 @@ export class ListadoJugadoresComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit(): void {
-    this.dataSource.data = this.datosJugadores
+    
   }
 
   ngAfterViewInit(): void {
@@ -144,14 +144,14 @@ export class ListadoJugadoresComponent implements OnInit, AfterViewInit{
   agregar(jugador: Jugador) {
     this.datosJugadores.push(new Jugador(jugador.id, jugador.nombre, jugador.posicion,jugador.equipo, jugador.dorsal));
     this.dataSource.data = [...this.datosJugadores]
-   
+
   }
 
   modificarJugador(jugador: Jugador) {
     const dialogo1 = this.dialog.open(CuadroJugadorComponent, {
       data: new Jugador(jugador.id, jugador.nombre, jugador.posicion,jugador.equipo, jugador.dorsal)
     });
-    
+
       dialogo1.afterClosed().subscribe((jugador:Jugador) => {
         if(jugador != undefined){
           let jugadorModificar = this.datosJugadores.find(jugador => jugador.id === jugador.id)
