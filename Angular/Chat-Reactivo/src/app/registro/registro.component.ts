@@ -11,7 +11,7 @@ export class RegistroComponent {
 
   usuario : Usuario = new Usuario('','','')
   confirmar : string = ""
-  
+
   constructor(private http:ServicioService){
 
   }

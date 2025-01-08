@@ -16,6 +16,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { ChatComponent } from './chat/chat.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @NgModule({
