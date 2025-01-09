@@ -42,7 +42,7 @@
           <div *ngIf="miFormulario.get('password')?.hasError('required') && (miFormulario.get('password')?.dirty || miFormulario.get('password')?.touched)" class="text-danger">
             La Contraseña es obligatoria.
           </div>
-          <div *ngIf="miFormulario.get('password')?.hasError('minlength') && miFormulario.get('password')?.hasError('pattern')" class="text-danger">
+          <div *ngIf="miFormulario.get('password')?.hasError('minlength') || miFormulario.get('password')?.hasError('pattern')" class="text-danger">
             La Contraseña debe contener al menos 10 caracteres, 1 minuscula, 1 numero y 1 caracter no alfanumerico.
           </div>
         </div>
