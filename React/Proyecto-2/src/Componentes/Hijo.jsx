@@ -1,8 +1,14 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React from "react";
 
-function Hijo(calificacion ) {
+
+function Hijo({nombre, calificacion}) {
   return (
-    <div><p>Calificacion: {calificacion}</p></div>
+    <div>
+      <h3>Nombre: {nombre}</h3>
+      <p>Calificacion: {calificacion}</p>
+    </div>
   )
 }
 

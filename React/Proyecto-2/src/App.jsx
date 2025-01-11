@@ -1,19 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+/* eslint-disable no-unused-vars */
+import React from "react";
 import './App.css'
-import Hijo from './Componentes/Hijo.jsx'
+import Hijo from './Componentes/Hijo'
 
 function App() {
 
-  // const alumno1 = "Lola";
+  const alumno1 = "Lola";
   const calificacion1 = Math.round(Math.random()*10);
+
+  const alumno2 = "Luis";
+  const calificacion2 = Math.round(Math.random()*10);
 
   return (
     <>
-    <Hijo calificacion={calificacion1}/>
-    {/* <Hijo nombre={alumno2} calificacion={calificacion2} />
-    <Hijo nombre={alumno3} calificacion={calificacion3} /> */}
+      <h2>Ejemplos de Props (parametros) en React</h2>
+      <Hijo nombre={alumno1} calificacion={calificacion1} />
+      <Hijo nombre={alumno2} calificacion={calificacion2} />
     </>
   )
 }

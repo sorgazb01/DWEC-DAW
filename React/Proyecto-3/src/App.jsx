@@ -1,33 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './Componentes/estilos.css'
+import Operaciones from './Componentes/Operaciones'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [numero1, setNumero1] = useState(0)
+  const [numero2, setNumero2] = useState(0)
+
+  const obtenerNumero1 = (e) => {
+    setNumero1(Number(e.target.value))
+  }
+
+  const obtenerNumero2 = (e) => {
+    setNumero2(Number(e.target.value))
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>Calculadora REACT</h1>
+      <div className='contenedorApp'>
+        <div className='contendorPadre'>
+          <input type="number" value={numero1} onChange={obtenerNumero1} placeholder='Introduce el valor de Numero-1'/>
+          <input type="number" value={numero2} onChange={obtenerNumero2} placeholder='Introduce el valor de Numero-1'/>
+        </div>
+        <Operaciones numero1={numero1} numero2={numero2} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

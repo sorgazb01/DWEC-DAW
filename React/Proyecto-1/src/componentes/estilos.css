@@ -31,7 +31,7 @@ body {
     background-color: #4caf50;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 8px;
     font-size: 18px;
     cursor: pointer;
@@ -41,7 +41,7 @@ body {
     background-color: #844caf;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 8px;
     font-size: 18px;
     cursor: pointer;
@@ -54,4 +54,21 @@ body {
   
   .estilo_decremento:hover{
     background-color: #16536b;
+  }
+
+  .titulo{
+    margin: 0px;
+    color: black;
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+  input{
+    background-color: white;
+    color: black;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px;
   }

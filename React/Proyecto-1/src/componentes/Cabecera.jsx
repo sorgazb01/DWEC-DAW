@@ -1,8 +1,9 @@
 
-
 function Cabecera() {
   return (
-    <div>Cabecera</div>
+    <div className="app">
+      <h2 className="titulo">Cabecera</h2>
+    </div>
   )
 }
 
