@@ -1,0 +1,29 @@
+<div class="">
+  <div class="">
+      <div class="">
+          <div class="">
+              <h1 class="">Iniciar Sesion</h1>
+          </div>
+          <form [formGroup]="formRegistro" (ngSubmit)="loguearUsuario()">
+              <!-- Email -->
+              <div class="">
+                  <mat-form-field class="" appearance="outline" hideRequiredMarker>
+                      <mat-label class="">Email</mat-label>
+                      <input type="email"  matInput formControlName="email" placeholder="Introduce email">
+                  </mat-form-field>
+              </div>
+              <!-- Password -->
+              <div class="">
+                  <mat-form-field class="" appearance="outline" hideRequiredMarker>
+                      <mat-label class="">Introduce contraseña</mat-label>
+                      <input matInput type="password" formControlName="pwd" placeholder="Introduce contraseña">
+                  </mat-form-field>
+              </div>
+
+              <div class="">
+                  <button type="submit" [disabled]="!formRegistro.valid" class="">Iniciar Sesion</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
