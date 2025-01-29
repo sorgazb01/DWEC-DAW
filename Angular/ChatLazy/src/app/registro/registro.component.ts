@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicioUserService } from '../servicio-user.service';
 import { Usuario } from '../usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -22,7 +23,7 @@ export class RegistroComponent implements OnInit{
     })
   }
 
-  constructor(private servicioUserService: ServicioUserService) {
+  constructor(private servicioUserService: ServicioUserService,private route:Router) {
 
   }
 
@@ -33,6 +34,7 @@ export class RegistroComponent implements OnInit{
       this.usuario = x
     })
     alert("Usuario registrado correctamente")
+    this.route.navigate(['login'])
   }
 
 }

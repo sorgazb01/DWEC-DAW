@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from '../usuario';
 import { ServicioUserService } from '../servicio-user.service';
-import { Route } from '@angular/router';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit{
       })
     }
 
-    constructor(private servicioUserService: ServicioUserService, private router :Route) {
+    constructor(private servicioUserService: ServicioUserService, private route : Router) {
 
     }
 
@@ -31,8 +31,9 @@ export class LoginComponent implements OnInit{
       this.servicioUserService.inicarSession(this.formRegistro.value).subscribe((x) => {
         this.usuario = x[0]
       })
-      console.log(this.usuario)
-      sessionStorage.setItem('Nombre',this.formRegistro.value.email)
-      this.router.navigate(['chat'])
+      sessionStorage.setItem('Nombre',this.usuario.nombre)
+      this.route.navigate(['chat'])
+      // console.log(this.usuario)
+      // this.route.(['chat'])
     }
 }

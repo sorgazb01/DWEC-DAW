@@ -10,12 +10,16 @@ import { ChatComponent } from './chat/chat.component';
 import { ChatPrivadoComponent } from './chat-privado/chat-privado.component';
 import { AdminComponent } from './admin/admin.component';
 import { MenuComponent } from './menu/menu.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule}  from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input'
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatTableModule } from '@angular/material/table'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatButtonModule } from '@angular/material/button'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,21 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatFormFieldModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatTableModule,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatSortModule,
 
   ],
   providers: [],
