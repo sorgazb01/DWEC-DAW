@@ -1,7 +1,7 @@
 <p *ngIf="!nombreUs">Usuario: sesión cerrada</p>
 <ng-container *ngIf="nombreUs">
 <p>Usuario: {{ nombreUs }}</p>
-<button (click)="cerrarSesion()">Cerrar Sesión</button>
+<button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
 </ng-container>
 <h1>Mensajes Globales</h1>
 

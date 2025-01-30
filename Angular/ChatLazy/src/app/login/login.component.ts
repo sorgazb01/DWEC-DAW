@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit{
       this.servicioUserService.inicarSession(this.formRegistro.value).subscribe((x) => {
         this.usuario = x[0]
       })
-      sessionStorage.setItem('Nombre',this.usuario.nombre)
+      sessionStorage.setItem('Nombre',this.usuario.email)
       this.route.navigate(['chat'])
       // console.log(this.usuario)
       // this.route.(['chat'])

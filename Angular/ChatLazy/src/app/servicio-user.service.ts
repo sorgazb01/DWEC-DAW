@@ -27,5 +27,13 @@ export class ServicioUserService {
     return this.http.post<Mensaje>('http://moralo.atwebpages.com/menuAjax/chat/AltaMensaje.php',mensaje)
   }
 
-// http://moralo.atwebpages.com/menuAjax/chat/SeleccionarUsuario.php?email='+user.email+'&pwd='+user.pwd
+  leerMensajesPrivados(email:string):Observable<Mensaje[]>{
+    return this.http.get<Mensaje[]>('http://moralo.atwebpages.com/menuAjax/chat/ObtenerMensajesP.php?usuario='+email)
+  }
+
+  mandarMensajePrivado(mensaje : Mensaje):Observable <Mensaje>{
+    console.log(mensaje)
+    return this.http.post<Mensaje>('http://moralo.atwebpages.com/menuAjax/chat/AltaMensajeP.php',mensaje)
+  }
+
 }
