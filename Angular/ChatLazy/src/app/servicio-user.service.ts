@@ -20,7 +20,7 @@ export class ServicioUserService {
   }
 
   leerMensajes():Observable<Mensaje[]>{
-    return this.http.get<Mensaje[]>('http://moralo.atwebpages.com/menuAjax/chat/ObtenerMensajes.php')
+    return this.http.get<Mensaje[]>('http://moralo.atwebpages.com/menuAjax/chat/ObtenerMensajes2.php')
   }
 
   mandarMensajeGlobal(mensaje : Mensaje):Observable <Mensaje>{
