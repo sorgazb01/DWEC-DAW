@@ -6,6 +6,8 @@ import { Mensaje } from '../mensaje';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { Usuario } from '../usuario';
+import { ServiciolocaluService } from '../serviciolocalu.service';
 
 @Component({
   selector: 'app-chat',
@@ -25,13 +27,23 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   mensajeNuevo : Mensaje = {id:0,usuario:'',fecha:'',mensaje:'',destinatario:'Todos', activo:1}
 
+  usuario : Usuario ={
+    nombre : '',
+    email:'',
+    pwd:'',
+    activo:1
+  }
+
+  nuevaPWD !: string
+
   ngOnInit(): void {
-    this.nombreUs = sessionStorage.getItem('Nombre');
+    this.nombreUs = sessionStorage.getItem('nombreUs');
     if(this.nombreUs == null){
       this.dataSource = new MatTableDataSource<Mensaje>()
     }else{
       this.httpCliente.leerMensajes().subscribe(x=>this.dataSource.data = x)
     }
+    console.log(sessionStorage.getItem('nombreUs'))
   }
 
   ngAfterViewInit(): void {
@@ -43,7 +55,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }
   }
 
-  constructor(private httpCliente : ServicioUserService, private route:Router){
+  constructor(private httpCliente : ServiciolocaluService, private route:Router){
   }
 
   filtar(event: KeyboardEvent) {
@@ -52,7 +64,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   cerrarSesion(){
-    sessionStorage.removeItem('Nombre');
+    sessionStorage.removeItem('nombreUs');
     this.nombreUs='Sesion cerrada'
     this.dataSource = new MatTableDataSource<Mensaje>()
     this.route.navigate(['login'])
@@ -66,5 +78,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   recargar(){
     this.httpCliente.leerMensajes().subscribe(x=>this.dataSource.data = x)
+  }
+
+  cambiarPWD(){
+    this.usuario.email = this.nombreUs || '';
+    this.usuario.pwd = this.nuevaPWD
+    console.log(this.usuario)
+    this.httpCliente.cambiarPwd(this.usuario).subscribe()
+    alert('Contraseña cambiada')
+    this.cerrarSesion()
+
   }
 }

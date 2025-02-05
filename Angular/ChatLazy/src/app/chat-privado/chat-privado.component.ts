@@ -6,6 +6,7 @@ import { Mensaje } from '../mensaje';
 import { ServicioUserService } from '../servicio-user.service';
 import { Router } from '@angular/router';
 import { Usuario } from '../usuario';
+import { ServiciolocaluService } from '../serviciolocalu.service';
 
 @Component({
   selector: 'app-chat-privado',
@@ -26,12 +27,17 @@ export class ChatPrivadoComponent {
 
     mensajeNuevo : Mensaje = {id:0,usuario:'',fecha:'',mensaje:'',destinatario:'', activo:1}
 
+    listadoUsuarios !: Usuario[]
+
     ngOnInit(): void {
       this.nombreUs = sessionStorage.getItem('Nombre');
       if(this.nombreUs == null){
         this.dataSource = new MatTableDataSource<Mensaje>()
       }else{
         this.httpCliente.leerMensajesPrivados(this.nombreUs).subscribe(x=>this.dataSource.data = x)
+        this.httpCliente.obtenerListadoUsuarios().subscribe((x:Usuario[])=>{
+          this.listadoUsuarios=x
+        })
       }
     }
 
@@ -44,7 +50,7 @@ export class ChatPrivadoComponent {
       }
     }
 
-    constructor(private httpCliente : ServicioUserService, private route:Router){
+    constructor(private httpCliente : ServiciolocaluService, private route:Router){
     }
 
     filtar(event: KeyboardEvent) {

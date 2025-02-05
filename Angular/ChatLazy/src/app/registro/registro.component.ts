@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServicioUserService } from '../servicio-user.service';
 import { Usuario } from '../usuario';
 import { Router } from '@angular/router';
+import { ServiciolocaluService } from '../serviciolocalu.service';
 
 @Component({
   selector: 'app-registro',
@@ -23,7 +24,7 @@ export class RegistroComponent implements OnInit{
     })
   }
 
-  constructor(private servicioUserService: ServicioUserService,private route:Router) {
+  constructor(private servicioUserService: ServiciolocaluService,private route:Router) {
 
   }
 

@@ -1,8 +1,9 @@
 <p *ngIf="!nombreUs">Usuario: sesión cerrada</p>
-<ng-container *ngIf="nombreUs">
+<p *ngIf="nombreUs!='admin@gmail.com'">No eres admin</p>
+<ng-container *ngIf="nombreUs == 'admin@gmail.com'">
 <p>Usuario: {{ nombreUs }}</p>
 <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
-</ng-container>
+
 <h1>Lista de Mensajes Chat</h1>
 
 <input matInput (keyup)="filtar($event)" placeholder="Buscador ..." #input>
@@ -103,3 +104,4 @@
       </table>
       <mat-paginator #paginator2 [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
+</ng-container>

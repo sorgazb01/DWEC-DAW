@@ -14,6 +14,14 @@
       </mat-form-field>
   </div>
 
+  <!-- Cambiar PWD -->
+   <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Introduce tu nueva password</mat-label>
+      <input type="password" matInput [(ngModel)]="nuevaPWD" placeholder="Introduce tu nueva password" (keydown.enter)="cambiarPWD()" (keyup)="recargar()">
+    </mat-form-field>
+   </div>
+
 <input matInput (keyup)="filtar($event)" placeholder="Buscador ..." #input>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort >

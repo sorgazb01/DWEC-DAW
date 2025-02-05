@@ -34,11 +34,4 @@ export class ServicioAdminService {
     bloquearUsuario(usuario:Usuario):Observable<Usuario>{
       return this.httpClient.post<Usuario>('http://moralo.atwebpages.com/chat/BloquearUsuario.php',usuario)
     }
-
-// Aplicaciones Angular
-// http://moralo.atwebpages.com/chat/adminMensajes/  (bloquear - activar mensajes - listado todos mensajes)
-
-// http://moralo.atwebpages.com/chat/listarMsjActivos/  (listado mensajes activos)
-
-// http://moralo.atwebpages.com/chat/adminUser/  (bloquear- activar usuarios -listado completo usuarios)
 }
