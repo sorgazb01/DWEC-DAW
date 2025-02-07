@@ -15,8 +15,8 @@ export class ServiciolocaluService {
     return this.http.post<Usuario>('http://localhost/serviciosChat/insertarUsuario.php', usuario)
   }
 
-  inicarSession(usuario : Usuario):Observable<Usuario[]>{
-    return this.http.get<Usuario[]>('http://localhost/serviciosChat/logeo.php?email='+usuario.email+'&pwd='+usuario.pwd)
+  inicarSession(usuario : Usuario):Observable<Usuario>{
+    return this.http.post<Usuario>('http://localhost/serviciosChat/login.php',usuario)
   }
 
   leerMensajes():Observable<Mensaje[]>{
@@ -24,16 +24,16 @@ export class ServiciolocaluService {
   }
 
   mandarMensajeGlobal(mensaje : Mensaje):Observable <Mensaje>{
-    return this.http.post<Mensaje>('http://localhost/serviciosChat/insertarMensaje.php',mensaje)
+    return this.http.post<Mensaje>('http://localhost/serviciosChat/insertarmensaje.php',mensaje)
   }
 
   leerMensajesPrivados(email:string):Observable<Mensaje[]>{
-    return this.http.get<Mensaje[]>('http://moralo.atwebpages.com/menuAjax/chat/ObtenerMensajesP.php?usuario='+email)
+    return this.http.get<Mensaje[]>('http://localhost/serviciosChat/listadoMensajesP.php?email='+email)
   }
 
   mandarMensajePrivado(mensaje : Mensaje):Observable <Mensaje>{
     console.log(mensaje)
-    return this.http.post<Mensaje>('http://moralo.atwebpages.com/menuAjax/chat/AltaMensajeP.php',mensaje)
+    return this.http.post<Mensaje>('http://localhost/serviciosChat/insertarmensajep.php',mensaje)
   }
 
   obtenerListadoUsuarios():Observable<Usuario[]>{
@@ -41,6 +41,6 @@ export class ServiciolocaluService {
   }
 
   cambiarPwd(usuario : Usuario):Observable<Usuario>{
-    return this.http.post<Usuario>('http://moralo.atwebpages.com/menuAjax/chat/EditarUsuario.php',usuario)
+    return this.http.post<Usuario>('http://localhost/serviciosChat/editarPwd.php',usuario)
   }
 }

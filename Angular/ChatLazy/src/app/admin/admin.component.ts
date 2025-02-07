@@ -6,6 +6,7 @@ import { Mensaje } from '../mensaje';
 import { ServicioAdminService } from '../servicio-admin.service';
 import { Router } from '@angular/router';
 import { Usuario } from '../usuario';
+import { ServiciolocaleaService } from '../serviciolocalea.service';
 
 @Component({
   selector: 'app-admin',
@@ -29,7 +30,7 @@ export class AdminComponent implements OnInit,AfterViewInit{
     dataSource2 = new MatTableDataSource<Usuario>
 
     ngOnInit(): void {
-      this.nombreUs = sessionStorage.getItem('Nombre');
+      this.nombreUs = sessionStorage.getItem('nombreUs');
       if(this.nombreUs == null){
         this.dataSource = new MatTableDataSource<Mensaje>()
         this.dataSource2 = new MatTableDataSource<Usuario>()
@@ -53,7 +54,7 @@ export class AdminComponent implements OnInit,AfterViewInit{
       }
     }
 
-    constructor(private httpCliente : ServicioAdminService, private route:Router){
+    constructor(private httpCliente : ServiciolocaleaService, private route:Router){
     }
 
     filtar(event: KeyboardEvent) {

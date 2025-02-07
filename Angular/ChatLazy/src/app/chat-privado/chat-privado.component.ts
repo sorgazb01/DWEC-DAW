@@ -30,7 +30,7 @@ export class ChatPrivadoComponent {
     listadoUsuarios !: Usuario[]
 
     ngOnInit(): void {
-      this.nombreUs = sessionStorage.getItem('Nombre');
+      this.nombreUs = sessionStorage.getItem('nombreUs');
       if(this.nombreUs == null){
         this.dataSource = new MatTableDataSource<Mensaje>()
       }else{
