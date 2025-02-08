@@ -1,26 +1,26 @@
-<p *ngIf="!nombreUs">Usuario: sesión cerrada</p>
+<h1 style="font-weight: bold; text-align: center;" *ngIf="!nombreUs">Inicia Sesion para acceder al Chat</h1>
+<p style="font-weight: bold; text-align: center;" *ngIf="!nombreUs">Usuario: sesión cerrada</p>
 <ng-container *ngIf="nombreUs">
-<p>Usuario: {{ nombreUs }}</p>
-<button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
-</ng-container>
-<h1>Mensajes Globales</h1>
-
-<!-- <(keypress)="aniadirMensaje()"> -->
+  <p>Usuario: {{ nombreUs }}</p>
+  <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
+  
+  <h1>Mensajes Globales</h1>
+  <!-- <(keypress)="aniadirMensaje()"> -->
   <!-- Email -->
   <div class="">
-      <mat-form-field appearance="outline">
-          <mat-label>Introduce Mensaje</mat-label>
-          <input type="text" matInput [(ngModel)]="mensajeNuevo.mensaje" placeholder="Introduce mensaje" (keydown.enter)="aniadirMensaje()" (keyup)="recargar()">
-      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Introduce Mensaje</mat-label>
+      <input type="text" matInput [(ngModel)]="mensajeNuevo.mensaje" placeholder="Introduce mensaje" (keydown.enter)="aniadirMensaje()" (keyup)="recargar()">
+    </mat-form-field>
   </div>
 
   <!-- Cambiar PWD -->
-   <div>
+  <div>
     <mat-form-field appearance="outline">
       <mat-label>Introduce tu nueva password</mat-label>
       <input type="password" matInput [(ngModel)]="nuevaPWD" placeholder="Introduce tu nueva password" (keydown.enter)="cambiarPWD()" (keyup)="recargar()">
     </mat-form-field>
-   </div>
+  </div>
 
 <input matInput (keyup)="filtar($event)" placeholder="Buscador ..." #input>
   <div class="mat-elevation-z8">
@@ -58,3 +58,4 @@
       </table>
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
+</ng-container>

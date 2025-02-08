@@ -1,8 +1,9 @@
-<p *ngIf="!nombreUs">Usuario: sesión cerrada</p>
+<h1 style="font-weight: bold; text-align: center;" *ngIf="!nombreUs">Inicia Sesion para acceder al Chat Privado</h1>
+<p style="font-weight: bold; text-align: center;" *ngIf="!nombreUs">Usuario: sesión cerrada</p>
 <ng-container *ngIf="nombreUs">
 <p>Usuario: {{ nombreUs }}</p>
 <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
-</ng-container>
+
 <h1>Mensajes Globales</h1>
 
   <div class="">
@@ -67,3 +68,4 @@
       </table>
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
+</ng-container>

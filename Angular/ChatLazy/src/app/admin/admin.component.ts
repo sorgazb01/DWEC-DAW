@@ -21,6 +21,7 @@ export class AdminComponent implements OnInit,AfterViewInit{
     @ViewChild('paginator2') paginator2!: MatPaginator;
     @ViewChild(MatSort) sort2 !: MatSort;
 
+    servicos !: any
 
     nombreUs !: string|null
 
@@ -30,13 +31,18 @@ export class AdminComponent implements OnInit,AfterViewInit{
     dataSource2 = new MatTableDataSource<Usuario>
 
     ngOnInit(): void {
+      if(sessionStorage.getItem('servicio')== 'local'){
+        this.servicos = this.serviciosLocales
+      }else{
+        this.servicos = this.serviciosOnline
+      }
       this.nombreUs = sessionStorage.getItem('nombreUs');
       if(this.nombreUs == null){
         this.dataSource = new MatTableDataSource<Mensaje>()
         this.dataSource2 = new MatTableDataSource<Usuario>()
       }else{
-        this.httpCliente.obtenerMensajesAdmin().subscribe(x=>this.dataSource.data = x)
-        this.httpCliente.obtenerUsuarios().subscribe(x=>this.dataSource2.data = x)
+        this.servicos.obtenerMensajesAdmin().subscribe((x: Mensaje[])=>this.dataSource.data = x)
+        this.servicos.obtenerUsuarios().subscribe((x: Usuario[])=>this.dataSource2.data = x)
       }
     }
 
@@ -54,7 +60,7 @@ export class AdminComponent implements OnInit,AfterViewInit{
       }
     }
 
-    constructor(private httpCliente : ServiciolocaleaService, private route:Router){
+    constructor(private serviciosOnline : ServicioAdminService,private serviciosLocales : ServiciolocaleaService, private route:Router){
     }
 
     filtar(event: KeyboardEvent) {
@@ -72,12 +78,12 @@ export class AdminComponent implements OnInit,AfterViewInit{
     }
 
     refrescar(){
-      this.httpCliente.obtenerMensajesAdmin().subscribe(x=>this.dataSource.data = x)
-      this.httpCliente.obtenerUsuarios().subscribe(x=>this.dataSource2.data = x)
+      this.servicos.obtenerMensajesAdmin().subscribe((x: Mensaje[])=>this.dataSource.data = x)
+      this.servicos.obtenerUsuarios().subscribe((x: Usuario[])=>this.dataSource2.data = x)
     }
 
     activarM(mensaje : Mensaje){
-      this.httpCliente.activarMensaje(mensaje).subscribe((resultado:Mensaje)=>{
+      this.servicos.activarMensaje(mensaje).subscribe((resultado:Mensaje)=>{
       },()=>{
         this.refrescar();
         alert('Mensaje Activado')
@@ -85,7 +91,7 @@ export class AdminComponent implements OnInit,AfterViewInit{
     }
 
     bloquearM(mensaje : Mensaje){
-      this.httpCliente.bloquearMensaje(mensaje).subscribe((resultado:Mensaje)=>{
+      this.servicos.bloquearMensaje(mensaje).subscribe((resultado:Mensaje)=>{
       },()=>{
         this.refrescar();
         alert('Mensaje Activado')
@@ -93,7 +99,7 @@ export class AdminComponent implements OnInit,AfterViewInit{
     }
 
     activarU(usuario : Usuario){
-      this.httpCliente.activarUsuario(usuario).subscribe((resultado:Usuario)=>{
+      this.servicos.activarUsuario(usuario).subscribe((resultado:Usuario)=>{
       },()=>{
         this.refrescar();
         alert('Usuario Activado')
@@ -101,7 +107,7 @@ export class AdminComponent implements OnInit,AfterViewInit{
     }
 
     bloquearU(usuario : Usuario){
-      this.httpCliente.bloquearUsuario(usuario).subscribe((resultado:Usuario)=>{
+      this.servicos.bloquearUsuario(usuario).subscribe((resultado:Usuario)=>{
       },()=>{
         this.refrescar();
         alert('Usuario Activado')

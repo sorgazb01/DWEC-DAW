@@ -14,54 +14,46 @@ export class LoginComponent implements OnInit{
 
     formRegistro !: FormGroup;
 
-    usuario : Usuario = {
-      nombre : '',
-      email : '',
-      pwd : '',
-      activo : 1
-    }
-    listadoUsuarios : Usuario[] = []
+    inicioSesion = false
 
-    existeU : boolean = false
 
-    usuarioEncontrado : Usuario = {
-      nombre : '',
-      email : '',
-      pwd : '',
-      activo : 1
-    }
+    servicios !: any
+
+    tipoServicios !: string
 
     ngOnInit(): void {
       this.formRegistro = new FormGroup({
         email: new FormControl('', [Validators.required]),
         pwd: new FormControl('', [Validators.required])
       })
+      this.tipoServicios = "local"
+      this.servicios = this.servicosLocales
+      sessionStorage.setItem('nombreUs','')
+    }
+
+    constructor(private servicosLocales: ServiciolocaluService, private serviciosOnline : ServicioUserService,private route:Router) {
 
     }
 
-    constructor(private servicioUserService: ServiciolocaluService, private route : Router) {
-
+    cambiarServicios(tipo:string){
+      this.tipoServicios = tipo
+      if(this.tipoServicios == "local"){
+        this.servicios = this.servicosLocales
+      }else if(this.tipoServicios == "online"){
+        this.servicios = this.serviciosOnline
+      }
     }
 
     loguearUsuario() {
-      this.servicioUserService.obtenerListadoUsuarios().subscribe(x=>{
-        this.listadoUsuarios=x
-        this.listadoUsuarios.forEach(user=>{
-          if(user.email == this.formRegistro.value.email && user.pwd == this.formRegistro.value.pwd){
-            this.usuarioEncontrado = user
-            this.existeU = true
-          }
-        })
-      })
-      if (this.existeU) {
-        if (this.usuarioEncontrado.activo == 1) {
-          sessionStorage.setItem('nombreUs',this.usuarioEncontrado.email);
-          if (this.usuarioEncontrado.email=="admin@gmail.com"){
-            this.route.navigate(['admin']);
-          }else{
-            this.route.navigate(['chat']);
-          }
-        }
+      this.servicios.inicarSession(this.formRegistro.value).subscribe()
+      sessionStorage.setItem('nombreUs',this.formRegistro.value.email),
+      sessionStorage.setItem('servicio',this.tipoServicios)
+      if (sessionStorage.getItem('nombreUs')=="admin@gmail.com"){
+        this.route.navigate(['admin']);
+        this.inicioSesion = true
+      }else{
+        this.route.navigate(['chat']);
+        this.inicioSesion = true
       }
     }
 }

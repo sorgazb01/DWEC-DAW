@@ -19,6 +19,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
 
+  servicos !: any
+
   nombreUs !: string|null
 
   cabecera: string [] = ['id', 'usuario', 'fecha', 'mensaje']
@@ -37,11 +39,16 @@ export class ChatComponent implements OnInit, AfterViewInit {
   nuevaPWD !: string
 
   ngOnInit(): void {
+    if(sessionStorage.getItem('servicio')== 'local'){
+      this.servicos = this.servicosLocales
+    }else{
+      this.servicos = this.serviciosOnline
+    }
     this.nombreUs = sessionStorage.getItem('nombreUs');
     if(this.nombreUs == null){
       this.dataSource = new MatTableDataSource<Mensaje>()
     }else{
-      this.httpCliente.leerMensajes().subscribe(x=>this.dataSource.data = x)
+      this.servicos.leerMensajes().subscribe((x: Mensaje[])=>this.dataSource.data = x)
     }
     console.log(sessionStorage.getItem('nombreUs'))
   }
@@ -55,7 +62,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }
   }
 
-  constructor(private httpCliente : ServiciolocaluService, private route:Router){
+  constructor(private servicosLocales: ServiciolocaluService, private serviciosOnline : ServicioUserService,private route:Router) {
+
   }
 
   filtar(event: KeyboardEvent) {
@@ -73,20 +81,19 @@ export class ChatComponent implements OnInit, AfterViewInit {
   aniadirMensaje() {
     this.mensajeNuevo.usuario = this.nombreUs!
     this.mensajeNuevo.fecha = new Date().toLocaleString()
-    this.httpCliente.mandarMensajeGlobal(this.mensajeNuevo).subscribe()
+    this.servicos.mandarMensajeGlobal(this.mensajeNuevo).subscribe()
   }
 
   recargar(){
-    this.httpCliente.leerMensajes().subscribe(x=>this.dataSource.data = x)
+    this.servicos.leerMensajes().subscribe((x: Mensaje[])=>this.dataSource.data = x)
   }
 
   cambiarPWD(){
     this.usuario.email = this.nombreUs || '';
     this.usuario.pwd = this.nuevaPWD
     console.log(this.usuario)
-    this.httpCliente.cambiarPwd(this.usuario).subscribe()
+    this.servicos.cambiarPwd(this.usuario).subscribe()
     alert('Contraseña cambiada')
     this.cerrarSesion()
-
   }
 }

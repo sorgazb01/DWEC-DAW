@@ -17,6 +17,8 @@ export class ChatPrivadoComponent {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort !: MatSort;
 
+    servicos !: any
+
     usuario !: Usuario
 
     nombreUs !: string|null
@@ -30,12 +32,17 @@ export class ChatPrivadoComponent {
     listadoUsuarios !: Usuario[]
 
     ngOnInit(): void {
+      if(sessionStorage.getItem('servicio')== 'local'){
+        this.servicos = this.servicosLocales
+      }else{
+        this.servicos = this.serviciosOnline
+      }
       this.nombreUs = sessionStorage.getItem('nombreUs');
       if(this.nombreUs == null){
         this.dataSource = new MatTableDataSource<Mensaje>()
       }else{
-        this.httpCliente.leerMensajesPrivados(this.nombreUs).subscribe(x=>this.dataSource.data = x)
-        this.httpCliente.obtenerListadoUsuarios().subscribe((x:Usuario[])=>{
+        this.servicos.leerMensajesPrivados(this.nombreUs).subscribe((x: Mensaje[])=>this.dataSource.data = x)
+        this.servicos.obtenerListadoUsuarios().subscribe((x:Usuario[])=>{
           this.listadoUsuarios=x
         })
       }
@@ -50,8 +57,10 @@ export class ChatPrivadoComponent {
       }
     }
 
-    constructor(private httpCliente : ServiciolocaluService, private route:Router){
+    constructor(private servicosLocales: ServiciolocaluService, private serviciosOnline : ServicioUserService,private route:Router) {
+
     }
+  
 
     filtar(event: KeyboardEvent) {
       const filtro = (event.target as HTMLInputElement).value;
@@ -68,11 +77,11 @@ export class ChatPrivadoComponent {
     aniadirMensaje() {
       this.mensajeNuevo.usuario = this.nombreUs!
       this.mensajeNuevo.fecha = new Date().toLocaleString()
-      this.httpCliente.mandarMensajePrivado(this.mensajeNuevo).subscribe()
+      this.servicos.mandarMensajePrivado(this.mensajeNuevo).subscribe()
     }
 
     recargar(){
-      // this.httpCliente.leerMensajesPrivados(this.nombreUs).subscribe(x=>this.dataSource.data = x)
+      this.servicos.leerMensajesPrivados(this.nombreUs).subscribe((x: Mensaje[])=>this.dataSource.data = x)
     }
 
 }

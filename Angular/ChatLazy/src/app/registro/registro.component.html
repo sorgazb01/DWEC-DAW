@@ -1,9 +1,9 @@
-
+<ng-container>
 <div class="">
   <div class="">
       <div class="">
           <div class="">
-              <h1 class="">Crear Usuario</h1>
+              <h1 style="font-weight: bold; text-align: center;">Crear Usuario</h1>
           </div>
           <form [formGroup]="formRegistro" (ngSubmit)="registrarUsuario()">
               <!-- Nombre -->
@@ -28,10 +28,18 @@
                   </mat-form-field>
               </div>
 
-              <div class="">
-                  <button type="submit" [disabled]="!formRegistro.valid" class="">Crear Usuario</button>
+              <div style="text-align: center;">
+                  <button type="submit" [disabled]="!formRegistro.valid" class="btn btn-outline-success">Crear Usuario</button>
               </div>
           </form>
       </div>
   </div>
+  <div style="text-align: center;">
+    <h3 style="font-weight: bold;">Servicios a utilizar:</h3>
+    <mat-button-toggle-group [(ngModel)]="tipoServicios" name="servicios" (ngModelChange)="cambiarServicios($event)">
+      <mat-button-toggle value="local">Local</mat-button-toggle>
+      <mat-button-toggle value="online">Online</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
 </div>
+</ng-container>
