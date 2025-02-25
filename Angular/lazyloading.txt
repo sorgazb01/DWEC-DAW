@@ -1,0 +1,52 @@
+Hay que trabajar con módulos y enrutamientos. La carga perezosa hace que no  se cargue de forma completa toda la aplicación web en una única llamada al servidor, sino que  se  carga cada módulo en  el momento de su utilización.
+
+El problema que tenemos que resolver es la web Huerta, tiene tres categorías principales (frutal , aromática, hortaliza): cada opción debe cargar tres páginas de productos específicos para cada categoría.
+
+1º crear  el proyecto y hay que  tener cuidado de indicar que utilizaremos rutas en la aplicación Angular:
+
+ng new huerto --routing
+2º Crear 3 módulos que alojen las clases que posteriormente implementaremos de cada producto . 
+ng generate module frutal --routing
+
+ng generate module hortaliza --routing
+
+ng generate module aromatica --routing 
+
+3º codificar las rutas del módulo principal de nuestra aplicación, abrir el archivo 'app-routing.module.ts' y especificamos la sintaxis para hacer la carga de los otros módulos con Lazy Loading.
+
+La sintaxis de carga diferida usa la propiedad loadChildren seguida de la función 'import' para las importaciones dinámicas del módulo indicado en el parámetro. La ruta de importación es la ruta relativa al módulo
+
+{ 
+    path: 'hortaliza',
+    component: HortalizaComponent,
+    loadChildren: () => import('./hortaliza/hortaliza.module').then(m => m.HortalizaModule)
+  },
+4º crear las rutas de acceso en el componente principal  'app-huerto' desde donde se accede al resto:
+
+  <a class="nav-link" routerLink="hortaliza">Hortaliza</a>
+
+5º Añadir la directiva <router-outlet> (es un contenedor que permite un componente) es indispensable para que se muestren alguno de las tres componentes 'FrutalComponent' , 'HortalizaComponent' . 'AromaticaComponent' según qué enlace se seleccione.
+
+<router-outlet></router-outlet>
+
+6º A partir de ahora hay que crear los componentes de segundo nivel y alojarlos en los módulos correspondientes
+
+ng g c hortaliza -m app.module.ts
+ng g c /hortaliza/tomate -m hortaliza/hortaliza.module.ts
+ng g c /hortaliza/patata -m hortaliza/hortaliza.module.ts
+ng g c /hortaliza/pimiento -m hortaliza/hortaliza.module.ts
+7º Una vez seleccionada la ruta 'hortaliza' (segundo nivel) se carga el componente 'HortalizaComponent', hay que añadir los routerLink en la vista del componente: HortalizaComponent.html
+
+      <a class="nav-link" routerLink="tomate">Tomate</a>
+8º crear las rutas del archivo 'hortaliza-routing.module.ts' . Aquí en teoría podríamos seguir haciendo Lazy-Loading, sin embargo al ser los contenidos de cada página básicos (una foto) hacemos simplemente una tabla de rutas.
+
+  {
+    path: 'tomate',
+    component: TomateComponent
+  },
+EXTRA BOOTSTRAP
+Recuerda que para incorporar bootstrap dentro del proyecto habría que modificar el fichero angular.json. Copiar en la carpeta assets los ficheros css y js que te descargues de la página oficial bootstrap.
+"styles": [
+              "src/assets/bootstrap.min.css"
+            ],
+            "scripts": [ "src/assets/bootstrap.bundle.min.js ]
